@@ -1,0 +1,38 @@
+94pg
+Cluster 초기 환경설정 
+	HDFS 블록크기 변경 
+		128MB -> 64GB
+
+	Cluster 에서 서비스 추가하기 : YARN 설치 
+	(HDFS 설치 후 YARN 설치)
+
+	첫 설치시에는 YARN, HDFS, ZooKeeper를 한번에 설치해도 되지만(사용자 지정 서비스에 해당)
+	첫 셋팅이 지난 후에는 하나씩 설치해주어야한다.
+
+	88pg 
+	install YARN
+		YARN(MR2 Included) 
+			ResourceManager : server01
+			JoHistory Server : server01
+			NodeManager : server01 - 03  #초기에 server설정을 했으므로 DataNode 선택하지 않아도된다
+
+	YARN, HDFS, ZooKeeper
+		내장된 PostgreSQL 데이터베이스를 사용하는 비-프로덕션 모드에서 Cloudera Manager를 실행 중입니다. 프로덕션으로 이동하기 전에 지원되는 외부 데이터베이스를 사용하여 전환하십시오
+		알림창에 자세한 세부 정보 
+		
+	홈 -> 구성 -> 데이터베이스 설정 
+	데이터베이스 설정 
+	Reports Manager
+
+
+	YARN 스케줄러와 리소스 매니저의 메모리설정 
+		최대 컨테이너 메모리 1 -> 1.5GB
+		yarn.nodemanager.resource.memory-mb 컨테이너 메모리 1 -> 5
+
+	YARN 스케줄러 변경
+		.FairScheduler -> .FifoScheduler
+		
+	Cluster1 재시작 
+
+C:\Users\leeeu\Desktop\bigdata2nd-master
+putty _ server02
